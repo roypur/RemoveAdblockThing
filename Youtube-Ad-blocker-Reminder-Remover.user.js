@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Remove Adblock Thing
 // @namespace    http://tampermonkey.net/
-// @version      3.2
+// @version      100.3.2
 // @description  Removes Adblock Thing
-// @author       JoelMatic
+// @author       roypur
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
-// @updateURL    https://github.com/TheRealJoelmatic/RemoveAdblockThing/raw/main/Youtube-Ad-blocker-Reminder-Remover.user.js
-// @downloadURL  https://github.com/TheRealJoelmatic/RemoveAdblockThing/raw/main/Youtube-Ad-blocker-Reminder-Remover.user.js
+// @updateURL    https://github.com/roypur/RemoveAdblockThing/raw/main/Youtube-Ad-blocker-Reminder-Remover.user.js
+// @downloadURL  https://github.com/roypur/RemoveAdblockThing/raw/main/Youtube-Ad-blocker-Reminder-Remover.user.js
 // @grant        none
 // ==/UserScript==
 
@@ -153,6 +153,12 @@
             if (window.location.href !== currentUrl) {
                 currentUrl = window.location.href;
                 removePageAds();
+            }
+
+            for (const elem of document.getElementsByClassName(
+                "ytd-statement-banner-renderer"
+            )) {
+                elem.remove();
             }
 
             if (ad)
@@ -314,7 +320,7 @@
         }
 
         const scriptUrl = 'https://raw.githubusercontent.com/TheRealJoelmatic/RemoveAdblockThing/main/Youtube-Ad-blocker-Reminder-Remover.user.js';
-
+        
         fetch(scriptUrl)
         .then(response => response.text())
         .then(data => {
