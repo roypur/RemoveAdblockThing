@@ -319,8 +319,8 @@
             return;
         }
 
-        const scriptUrl = 'https://raw.githubusercontent.com/TheRealJoelmatic/RemoveAdblockThing/main/Youtube-Ad-blocker-Reminder-Remover.user.js';
-        
+        const scriptUrl = 'https://raw.githubusercontent.com/roypur/RemoveAdblockThing/main/Youtube-Ad-blocker-Reminder-Remover.user.js';
+
         fetch(scriptUrl)
         .then(response => response.text())
         .then(data => {
