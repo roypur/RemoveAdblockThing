@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove Adblock Thing
 // @namespace    http://tampermonkey.net/
-// @version      100.3.7
+// @version      100.3.8
 // @description  Removes Adblock Thing
 // @author       roypur
 // @match        https://www.youtube.com/*
@@ -158,12 +158,19 @@
                 removePageAds();
             }
 
-            for (const elem of new Set(
-                [].concat(
-                    document.getElementsByClassName("ytd-statement-banner-renderer"),
-                    document.getElementsByClassName("tp-yt-iron-overlay-backdrop"),
-                )
-            )) {
+            for (const elem of document.getElementsByTagName("ytd-statement-banner-renderer")) {
+                elem.remove();
+            }
+
+            for (const elem of document.getElementsByClassName("ytd-statement-banner-renderer")) {
+                elem.remove();
+            }
+
+            for (const elem of document.getElementsByTagName("tp-yt-iron-overlay-backdrop")) {
+                elem.remove();
+            }
+
+            for (const elem of document.getElementsByClassName("tp-yt-iron-overlay-backdrop")) {
                 elem.remove();
             }
 
