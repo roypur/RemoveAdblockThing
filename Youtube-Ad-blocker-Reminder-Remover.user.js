@@ -159,8 +159,10 @@
             }
 
             for (const elem of new Set(
-                document.getElementsByClassName("ytd-statement-banner-renderer") +
-                document.getElementsByClassName("tp-yt-iron-overlay-backdrop")
+                [].concat(
+                    document.getElementsByClassName("ytd-statement-banner-renderer"),
+                    document.getElementsByClassName("tp-yt-iron-overlay-backdrop"),
+                )
             )) {
                 elem.remove();
             }
