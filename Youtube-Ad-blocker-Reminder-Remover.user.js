@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove Adblock Thing
 // @namespace    http://tampermonkey.net/
-// @version      100.3.5
+// @version      100.3.6
 // @description  Removes Adblock Thing
 // @author       roypur
 // @match        https://www.youtube.com/*
@@ -180,10 +180,8 @@
                     openAdCenterButton?.click();
 
                     var popupContainer = document.querySelector('body > ytd-app > ytd-popup-container > tp-yt-paper-dialog');
-                    const hidebackdrop = document.querySelector("body > tp-yt-iron-overlay-backdrop");
 
                     if (popupContainer) popupContainer.style.display = 'none';
-                    if (hidebackdrop) hidebackdrop.style.display = 'none';
 
                     const blockAdButton = document.querySelector('[label="Block ad"]');
                     blockAdButton?.click();
@@ -193,6 +191,9 @@
 
                     const closeAdCenterButton = document.querySelector('.zBmRhe-Bz112c');
                     closeAdCenterButton?.click();
+
+                    const hidebackdrop = document.querySelectorAll("tp-yt-iron-overlay-backdrop");
+                    if (hidebackdrop) hidebackdrop.style.display = 'none';
                 }
                 else{
                     if (video) video.play();
@@ -287,13 +288,18 @@
             ytd-ad-slot-renderer,
             yt-about-this-ad-renderer,
             yt-mealbar-promo-renderer,
-            ad-slot-renderer,
+            ytd-statement-banner-renderer,
+            ytd-ad-slot-renderer,
+            ytd-in-feed-ad-layout-renderer,
+            ytd-banner-promo-renderer-background
+            statement-banner-style-type-compact,
             .ytd-video-masthead-ad-v3-renderer,
             div#root.style-scope.ytd-display-ad-renderer.yt-simple-endpoint,
             div#sparkles-container.style-scope.ytd-promoted-sparkles-web-renderer,
             div#main-container.style-scope.ytd-promoted-video-renderer,
             div#player-ads.style-scope.ytd-watch-flexy,
-
+            ad-slot-renderer,
+            masthead-ad,
             #masthead-ad {
                 display: none !important;
             }
